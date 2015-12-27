@@ -1,0 +1,94 @@
+
+
+
+\documentclass[conference]{IEEEtran}
+
+\usepackage{acronym}
+
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{xspace}
+\usepackage{url}
+%\usepackage[dvips]{color}
+\usepackage{subfigure}
+\usepackage{pgf}
+\usepackage{pgfplots,pgfplotstable} %for plotting results
+\usepgfplotslibrary{units}
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{filecontents}
+\usepackage{tikz} % for drawing
+\usetikzlibrary{arrows,shapes,fit,automata,positioning,decorations,calc} % for drawing
+\usetikzlibrary{spy,backgrounds}
+\usepackage{algorithmic, algorithm}
+\newcounter{lemmas}
+\newtheorem{lemma}{Lemma}
+%\newcounter{proofs}
+%\newtheorem{proof}{Proof}
+\newcounter{theorems}
+\newtheorem{theorem}{Theorem}
+
+
+%\newtheorem*{proof*}{Theorem}
+%\newtheorem*{proof}{Proof}
+
+
+
+\newcounter{definitions}
+\newtheorem{definition}{Definition}
+
+\input{./content/00_macros.tex}  %Macros/#defs for the paper
+
+\begin{document}
+	
+		\renewcommand\floatpagefraction{.9}
+		\renewcommand\dblfloatpagefraction{.95} % for two column documents
+		\renewcommand\topfraction{.95}
+		\renewcommand\dbltopfraction{.95} % for two column documents
+		\renewcommand\bottomfraction{.95}
+		\renewcommand\textfraction{.1}   
+		\setcounter{totalnumber}{50}
+		\setcounter{topnumber}{50}
+		\setcounter{bottomnumber}{50}
+		
+		\setlength{\abovecaptionskip}{0pt}
+		
+		
+\input{./content/00_acronyms.tex} 		%acronyms
+	
+\title{Hybrid automata models of the heart for formal verification of cardiac pacemakers \vspace{-0.5cm} }
+
+\author{
+
+	\vspace{-1cm}
+}
+
+
+
+
+
+\maketitle
+
+
+
+
+
+\input{content/00_abstract}
+
+\input{content/01_introduction}
+\input{content/02_background}
+\input{content/03_hybridAutomata}
+\input{content/04_modularCodeGen}
+\input{content/04b_parallelComposition}
+\input{content/05_results}
+\input{content/06_relatedWork}
+\input{content/07_conclusions}
+
+
+\bibliographystyle{ieeetr}
+\bibliography{references} 
+
+\end{document}
+
+

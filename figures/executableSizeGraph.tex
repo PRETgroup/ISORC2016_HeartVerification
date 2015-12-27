@@ -1,0 +1,52 @@
+\begin{tikzpicture}
+\begin{axis}[
+	ybar,
+	width=\linewidth-5mm,
+	height=5cm,
+	enlarge y limits={upper, value=0.1},
+	enlarge x limits=0.15,
+	legend style={
+		at={(0.5,1.10)},
+		anchor=north,
+		legend columns=-1
+	},
+	ylabel={Executable Size (KB)},
+	ymin=0,
+	symbolic x coords={TSN, NHN, WH, MTG, NP},
+	xtick=data,
+%	nodes near coords,
+	nodes near coords align={vertical},
+]
+
+%Simulink
+\addplot coordinates {
+	(TSN,190)
+	(NHN,320)
+	(WH,226)
+	(MTG,188)
+	(NP,212)
+};
+
+%Piha (O0)
+\addplot coordinates {
+	(TSN,131)
+	(NHN,323)
+	(WH,163)
+	(MTG,130)
+	(NP,174)
+};
+
+%Piha (O2)
+\addplot coordinates {
+	(TSN,96)
+	(NHN,128)
+	(WH,98)
+	(MTG,97)
+	(NP,98)
+};
+
+
+\legend{\simulink, \ourTool (O0), \ourTool (O2)}
+
+\end{axis}
+\end{tikzpicture}

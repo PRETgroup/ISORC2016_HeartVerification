@@ -1,0 +1,64 @@
+\begin{tikzpicture}[yscale=0.85]
+\begin{axis}
+[
+	xlabel={Number of Heart Nodes},
+	ylabel={Execution Time ({s})},
+	axis y line = left,
+	axis x line = bottom,
+	xmin=0000,
+	xmax=1000,
+	ymin=0,
+	ymax=150,
+	ytick={0, 10, 50, 100, 150},
+	yticklabels={0, 10, 50, 100, 150},
+	extra tick style={grid=major},
+	legend style={
+		at={(0.52,0.99)},
+		anchor=north,
+		legend columns=-1
+	}
+]
+
+\addplot[color=blue!90,
+	mark=square*,
+	mark size=2
+] table [
+	x=n,
+	y=s_t,
+	col sep=comma
+] {./figures/scalabilityGraphData.csv};
+\addlegendentry{\simulink}
+
+\addplot[color=red!90,
+	mark=*,
+	mark size=2
+] table [
+	x=n,
+	y=p_t,
+	col sep=comma
+] {./figures/scalabilityGraphData.csv};
+\addlegendentry{\ourTool}
+
+\addplot[color=black!90,
+	dashed,
+	mark=.,
+	mark size=2
+] coordinates {
+	(0,10)
+	(1000,10)
+} node[pos=0.8] (endofrealtime) {};
+\node[above] at (endofrealtime) {Real Time};
+
+\addplot[color=blue!90,
+	dashed,
+	mark=.,
+	mark size=2
+] coordinates {
+	(297,126.448)
+	(297,0)
+};
+
+
+
+\end{axis}
+\end{tikzpicture}

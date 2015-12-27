@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+\begin{axis}[
+	ybar,
+	width=\linewidth-5mm,
+	height=5cm,
+	enlarge y limits={upper, value=0.1},
+	enlarge x limits=0.15,
+	legend style={
+		at={(0.5,1.10)},
+		anchor=north,
+		legend columns=-1
+	},
+	ylabel={Normalised execution time },
+	ymin=0,
+	symbolic x coords={TSN, NHN, WH, MTG, NP},
+	xtick=data,
+]
+
+%Simulink
+\addplot coordinates {
+	(TSN,1)
+	(NHN,1)
+	(WH,1)
+	(MTG,1)
+	(NP,1)
+};
+
+%Piha (O0)
+\addplot coordinates {
+	(TSN,0.40)
+	(NHN,0.12)
+	(WH,0.24)
+	(MTG,0.43)
+	(NP,0.42)
+};
+
+%Piha (O2)
+\addplot coordinates {
+	(TSN,0.16)
+	(NHN,0.05)
+	(WH,0.10)
+	(MTG,0.17)
+	(NP,0.15)
+};
+
+\legend{\simulink, \ourTool (O0), \ourTool (O2)}
+
+\end{axis}
+\end{tikzpicture}
