@@ -1,0 +1,108 @@
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,
+node distance=4cm,
+semithick,scale=0.8, transform shape]
+\tikzstyle{every state}=[rectangle,rounded corners,
+minimum height = 1.9cm, text width=3.35cm, text centered, fill=red!20,draw=none,text=black, draw,line width=0.3mm]
+\tikzset{
+	atrialCell/.style={
+		fill=green!20,
+		circle,
+		minimum size=1.5cm,
+		draw,
+		line width=0.2mm
+	}
+}
+\tikzset{
+	path/.style={
+		fill=green!20,
+		rectangle,
+		minimum size=1.5cm,
+		draw,
+		line width=0.2mm
+	}
+}
+
+
+
+\node[state, 
+label={[shift={(0,0)}]$t<=Trest\_Max$}, 
+label={[shift={(-1.5,-2.5)}]\large $ \mathbf{q_0}$ }]
+(Q0)  {$\dot{t}=1$};
+
+%entry
+\path[<-, dashed] (Q0.150) edge node[below, align=left, shift={(0.5,1)}] {
+	\footnotesize initial \\
+	\footnotesize $t=0$
+} ++(0cm,1.25cm);
+
+
+
+
+\node[state, 
+label={[shift={(0,0)}]$URGENT$}, 
+label={[shift={(-1.5,-2.5)}]\large $\mathbf{q_1}$   }]
+(Q1) [node distance=6.3cm, right of=Q0] {$\dot{t}=1$};
+
+\node[state, 
+label={[shift={(0.2,-2.5)}]$t<=Terp\_Max$}, 
+label={[shift={(-1.5,-2.5)}]\large $\mathbf{q_2}$  }] 
+(Q2) [below of=Q1] {$\dot{t}=1$};
+
+\node[state, 
+label={[shift={(0,-2.5)}]$t<=Trrp\_Max$}, 
+label={[shift={(-1.5,-2.5)}]\large $\mathbf{q_3}$  }]
+(Q3) [below of=Q0] {$\dot{t}=1$};
+
+\path[->] (Q0.10) edge node[align=center] {
+	$\frac{t>=Trest_min}{t=0}$
+} (Q1.170);
+
+
+\path[->] (Q1) edge node[align=center] {
+	$\frac{Act\_path!}{}$
+} (Q2);
+
+\path[->] (Q2) edge node[align=center] {
+	$\frac{t>=Terp_min}{t=0}$
+} (Q3);
+
+\path[->] (Q3) edge node[align=center,shift={(1.8,0)}] {
+	$\frac{t>=Trrp_min}{t=0}$
+} (Q0);
+
+
+\node[ draw,   inner xsep=1.1cm, inner ysep=1.9cm, shift={(0, 0.35)},
+label={[label distance=0cm]60:~}, 
+fit= (Q0)(Q2)] (BOX) {};
+
+%--------------------------- nodes on top ------------
+\node[atrialCell, above of = Q0, xshift=1.5cm, node distance = 3.9cm,
+label={[shift={(1,-0.4)}]\large $v$ },
+label={[shift={(1.1,-1.2)}]\large $v_{I_{0}}$ }]
+(AN1){$N_1$};
+
+
+\node[path, right of = AN1, node distance = 3cm] 
+(P1){$Path$};
+
+\node[atrialCell, right of = P1, node distance = 3cm,
+label={[shift={(-1.1,-0.4)}]\large $v_{I_{0}}$ },
+label={[shift={(-1,-1.2)}]\large $v$ }] 
+(AN2){$N_2$};
+
+\draw[<-](P1.160) -- (P1.160-|AN1.east);
+\draw[->](P1.210) -- (P1.210-|AN1.east);
+
+\draw[<-](P1.20) -- (P1.20-|AN2.west);
+\draw[->](P1.330) -- (P1.330-|AN2.west);
+
+
+
+\draw[-,dashed](AN1.-45) -- (BOX.north east);
+\draw[-,dashed](AN1.230) -- (BOX.north west);
+
+
+
+
+\end{tikzpicture}
