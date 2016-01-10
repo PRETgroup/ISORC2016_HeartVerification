@@ -1,16 +1,35 @@
 {
 	\centering
-	\subfigure[\label{fig:heart} Diagram of the heart. Reproduced 
-	from~\cite{zhihao12}]{
-		%\framebox[0.4\textwidth]{
-			\input{./figures/UpennTAmodel.tex}
-		%} %framebox
+	
+	\framebox[0.45\textwidth]{
+		\begin{minipage}{0.45\textwidth}
+		\subfigure[\label{fig:heart} Diagram of the heart. Reproduced 
+		from~\cite{zhihao12}]{
+				\input{./figures/UpennTAmodel.tex}
+		}
+		
+		\subfigure[The four stages of an \acf{AP}]{
+				\input{./figures/curveTA.tex}
+				\label{fig:actionPotential}
+		}
+		\end{minipage}
 	}
-	\subfigure[The four stages of an \acf{AP}]{
-		%\framebox[0.55\textwidth]{
-			\input{./figures/UoAHIOAmodel.tex}
-			\label{fig:actionPotential}
-		%}
+	\framebox[0.50\textwidth]{
+		\begin{minipage}{0.5\textwidth}
+		\subfigure[The four stages of an \acf{AP}]{
+			%\framebox[0.50\textwidth]{
+				\input{./figures/UoAHIOAmodel.tex}
+				\label{fig:actionPotential}
+			%}
+		}
+		\subfigure[The four stages of an \acf{AP}]{
+			%\framebox[0.50\textwidth]{
+				\input{./figures/curveHIOA.tex}
+				\label{fig:actionPotential}
+		%	}
+		}
+		\end{minipage}
 	}
+
 	
 }
